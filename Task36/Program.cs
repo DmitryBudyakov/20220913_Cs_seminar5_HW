@@ -4,11 +4,11 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
-void FillArray(int[] array)     // заполнение массива случайными числами из диапазона [-100;101)
+void FillArray(int[] array)     // заполнение массива случайными числами из диапазона [-100;100]
 {
     Random rnd = new Random();
     int length = array.Length;
-    int minNum = -10, maxNum = 11;
+    int minNum = -100, maxNum = 101;
     for (int i = 0; i < length; i++)
     {
         array[i] = rnd.Next(minNum, maxNum);
