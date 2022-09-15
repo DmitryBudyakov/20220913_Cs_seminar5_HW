@@ -3,34 +3,72 @@
 // Напишите программу, которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-void FillArray(int[] array)     // заполнение массива случайными числами из диапазона [100;1000)
+int[] FillArray(int size, int min, int max)     // заполнение массива случайными числами из диапазона [min,max]
 {
     Random rnd = new Random();
+    int[] array = new int[size];
     int length = array.Length;
     for (int i = 0; i < length; i++)
     {
-        array[i] = rnd.Next(100, 1000);
+        array[i] = rnd.Next(min, max + 1);
     }
+    return array;
 }
 
-void PrintEvenCount(int[] array)    // выводит количество чётных чисел в массиве
+// void PrintArray(int[] array)    // выводит список элементов в строку
+// {
+//     int length = array.Length;
+//     Console.Write("[");
+//     for (int i = 0; i < length; i++)
+//     {
+//         if(i== length - 1) Console.Write(array[i]);
+//         else Console.Write($"{array[i]}, ");
+//     }
+//     Console.WriteLine("]");
+// }
+
+string PrintArrayAsString(int[] array)  // возвращает строку с элементами массива
 {
     int length = array.Length;
     string output = String.Empty;
+    for (int i = 0; i < length; i++)
+    {
+        if(i== length - 1) output += array[i];
+        else output += $"{array[i]}, ";
+    }
+    return output;
+}
+
+int CountEvenElem(int[] array)    // возвращает количество чётных чисел в массиве
+{
+    int length = array.Length;
     int count = 0;                          // счетчик для подсчета четных элементов
     for (int i = 0; i < length; i++)
     {
         if (array[i] % 2 == 0) count++;     // увеличиваем счетчик, если элемент чётный
-        if (i == length - 1) output += array[i];    // список элементов массива
-        else output += $"{array[i]}, ";
     }
-    Console.WriteLine($"Количество чётных чисел в массиве [{output}] -> {count}");
+    return count;
 }
 
+Console.Clear();
+// ввод данных для создания массива
 Console.Write("Введите кол-во чисел в массиве: ");
-int arrayNum = Convert.ToInt32(Console.ReadLine());
+int arrayNums = Convert.ToInt32(Console.ReadLine());
 
-int[] arr = new int[arrayNum];
+Console.Write("Введите min значение для генерации массива [например, 100]: ");
+int arrayMin = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine(arrayMin);
 
-FillArray(arr);
-PrintEvenCount(arr);
+Console.Write("Введите max значение для генерации массива [например, 999]: ");
+int arrayMax = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine(arrayMax);
+
+// создание массива
+int[] arr = FillArray(arrayNums, arrayMin, arrayMax);
+string initArrayOut = PrintArrayAsString(arr);
+
+// считаем кол-во четных элементов в массиве
+int evenNums = CountEvenElem(arr);
+
+// выводим на консоль
+Console.WriteLine($"Количество чётных чисел в массиве [{initArrayOut}] -> {evenNums}");
