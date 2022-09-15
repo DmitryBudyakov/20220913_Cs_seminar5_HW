@@ -7,8 +7,7 @@ int[] FillArray(int size, int min, int max)     // заполнение масс
 {
     Random rnd = new Random();
     int[] array = new int[size];
-    int length = array.Length;
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < size; i++)
     {
         array[i] = rnd.Next(min, max + 1);
     }
@@ -33,7 +32,7 @@ string PrintArrayAsString(int[] array)  // возвращает строку с 
     string output = String.Empty;
     for (int i = 0; i < length; i++)
     {
-        if(i== length - 1) output += array[i];
+        if (i == length - 1) output += array[i];
         else output += $"{array[i]}, ";
     }
     return output;
