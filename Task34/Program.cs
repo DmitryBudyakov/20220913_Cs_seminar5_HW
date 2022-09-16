@@ -51,19 +51,11 @@ int CountEvenElem(int[] array)    // возвращает количество �
 
 Console.Clear();
 // ввод данных для создания массива
-Console.Write("Введите кол-во чисел в массиве: ");
+Console.Write("Введите кол-во 3-х значных чисел в массиве: ");
 int arrayNums = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите min значение для генерации массива [например, 100]: ");
-int arrayMin = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine(arrayMin);
-
-Console.Write("Введите max значение для генерации массива [например, 999]: ");
-int arrayMax = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine(arrayMax);
-
-// создание массива
-int[] arr = FillArray(arrayNums, arrayMin, arrayMax);
+// создание массива 3-х значных чисел
+int[] arr = FillArray(arrayNums, 100, 999);
 string initArrayOut = PrintArrayAsString(arr);
 
 // считаем кол-во четных элементов в массиве
