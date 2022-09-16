@@ -9,7 +9,7 @@ double[] CreateArray(int size, int range)
     Random rnd = new Random();
     for (int i = 0; i < size; i++)
     {
-        array[i] = Math.Round(rnd.NextDouble() * range, 2, MidpointRounding.ToZero);
+        array[i] = Math.Round(rnd.NextDouble() * range, 1, MidpointRounding.AwayFromZero);
     }
     return array;
 }
@@ -49,9 +49,10 @@ double CountDiffMaxMinArray(double[] array) // возвращает разниц
         if (array[i] < minNum) minNum = array[i];
         if (array[i] > maxNum) maxNum = array[i];
     }
-    double diffNum = Math.Round(maxNum - minNum, 2, MidpointRounding.ToZero);
+    double diffNum = Math.Round(maxNum - minNum, 1, MidpointRounding.AwayFromZero);
     return diffNum;
 }
+
 
 // данные для создания массива
 Console.Write("Введите кол-во элементов массива: ");
